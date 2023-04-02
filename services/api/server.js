@@ -7,6 +7,14 @@ const cors = require('cors');
 // get MongoDB driver connection
 const dbo = require('./db/conn');
 
+const cleanup = (event) => { // SIGINT is sent for example when you Ctrl+C a running process from the command line.
+  dbo.closeDB(); // Close MongodDB Connection when Process ends
+  process.exit(); // Exit with default success-code '0'.
+}
+
+process.on('SIGINT', cleanup);
+process.on('SIGTERM', cleanup);
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -15,7 +23,7 @@ app.use(express.json());
 app.use(require('./routes/record'));
 
 // Global error handling
-app.use(function (err, _req, res) {
+app.use(function (err, request, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });

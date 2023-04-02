@@ -4,22 +4,40 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
+        /*{
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true
-        },
+        },*/
         {
-            "type": "pwa-node",
+            "name": "NodeJs: Api Server",
+            "type": "node",
             "request": "launch",
-            "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\services\\api\\app_test.js"
+            "program": "${workspaceFolder}\\services\\api\\server.js"
+        },
+        /*{
+            "name": "NodeJs: systemstats",
+            "type": "node",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\services\\api\\utils\\systemstats.js"
+        },*/
+        {
+            "name": "NodeJs: characterstats",
+            "type": "node",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\services\\api\\utils\\characterstats.js"
         }
     ]
 }

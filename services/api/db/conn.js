@@ -9,25 +9,23 @@ const client = new MongoClient(connectionString, {
 let dbConnection;
 
 module.exports = {
-  connectToServer: function (callback) {
-    console.log('About to try db connection...');
-    client.connect(function (err, db) {
-      console.log('In the mongodb connect');
-      if (err || !db) {
-        console.log('Mongodb conn error');
-        return callback(err);
-      }
-
-      dbConnection = db.db('mapper');
-      console.log('Successfully connected to MongoDB.');
-      db.close();
+  connectToServer: async function (callback) {
+    try {
+      console.log('About to try db connection...');
+      await client.connect();
+      dbConnection = client.db('mapper');
       return callback();
-    }).catch(err =>
-      res.status(400).json({ msg: `Could not connect to MongoDB`, err })
-    );
+    }
+    catch(error) {
+      throw error;
+    }
   },
 
   getDb: function () {
     return dbConnection;
   },
+
+  closeDB: async function () {
+    await client.close();
+  }
 };

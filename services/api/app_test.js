@@ -3,7 +3,7 @@ const cors = require('cors');
 const BodyParser = require("body-parser");
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const ObjectId = require("mongodb").ObjectID;
-const CONNECTION_URL = "mongodb+srv://admin:p%40ssw0rd@cluster0.hkkzkeu.mongodb.net/?retryWrites=true&w=majority";
+const CONNECTION_URL = "mongodb+srv://admin:s85Z3LIp84BpTGXETlHc@cluster0.hkkzkeu.mongodb.net/?retryWrites=true&w=majority";
 const DATABASE_NAME = "mapper";
 
 
